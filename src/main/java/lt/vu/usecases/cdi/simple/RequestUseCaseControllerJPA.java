@@ -2,10 +2,9 @@ package lt.vu.usecases.cdi.simple;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import lt.vu.entities.Course;
-import lt.vu.entities.Student;
-import lt.vu.usecases.cdi.dao.CourseDAO;
-import lt.vu.usecases.cdi.dao.StudentDAO;
+import lt.vu.entities.Klientas;
+import lt.vu.entities.Uzsakymas;
+import lt.vu.usecases.cdi.dao.KlientasDAO;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
@@ -17,25 +16,25 @@ import java.util.List;
 public class RequestUseCaseControllerJPA {
 
     @Getter
-    private Course course = new Course();
+    private Klientas klientas = new Klientas();
     @Getter
-    private Student student = new Student();
+    private Uzsakymas uzsakymas = new Uzsakymas();
 
+    //@Inject
+    //private UzsakymasDAO uzsakymasDAO;
     @Inject
-    private CourseDAO courseDAO;
-    @Inject
-    private StudentDAO studentDAO;
+    private KlientasDAO klientasDAO;
 
     @Transactional
     public void createCourseStudent() {
-        student.getCourseList().add(course);
-        course.getStudentList().add(student);
-        courseDAO.create(course);
-        studentDAO.create(student);
+        klientas.getUzsakymasList().add(uzsakymas);
+        //uzsakymas.getKlientasList().add(klientas);
+        //uzsakymasDAO.create(uzsakymas);
+        klientasDAO.create(klientas);
         log.info("Maybe OK...");
     }
 
-    public List<Student> getAllStudents() {
-        return studentDAO.getAllStudents();
+    public List<Klientas> getAllClients() {
+        return klientasDAO.getAllClients();
     }
 }

@@ -1,8 +1,5 @@
 package lt.vu.entities;
 
-/**
- * Created by Aiste on 2017-03-15.
- */
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,10 +15,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Aiste
- */
 @Entity
 @Table(name = "uzsakymas")
 @NamedQueries({
@@ -53,6 +46,7 @@ public class Uzsakymas implements Serializable {
     @ManyToMany(mappedBy = "uzsakymasList")
     private List<Filmas> filmasList;
     @JoinColumn(name = "kliento_nr", referencedColumnName = "kliento_nr")
+
     @ManyToOne(optional = false)
     private Klientas klientoNr;
 
