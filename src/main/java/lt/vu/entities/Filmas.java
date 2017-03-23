@@ -34,7 +34,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = "filmoId")
+@EqualsAndHashCode(of = "pavadinimas")
 @ToString ( of = {"filmoId", "pavadinimas"})
 
 public class Filmas implements Serializable {

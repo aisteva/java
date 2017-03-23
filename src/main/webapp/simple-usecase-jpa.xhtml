@@ -13,14 +13,46 @@
     <h:body>
         <h1>Pridėti naują klientą (JPA)</h1>
         <h:form>
-            <p:fieldset legend="All cliens" toggleable="true" style="width: 50%">
+            <p:fieldset legend="Klientų sąrašas" toggleable="true" style="width: 50%">
                 <p:dataTable value="#{requestUseCaseControllerJPA.getAllClients()}" var="klientas">
                     <p:column headerText="Klientas">
-                        <h:outputText value="#{klientas.vardas} #{klientas.pavarde} #{klientas.telefonas}" />
+                        <h:outputText value="#{klientas.klientoNr}. #{klientas.vardas} #{klientas.pavarde} #{klientas.telefonas}" />
+                    </p:column>
+                    <p:column headerText="Uzsakymai">
+                        <ui:repeat var="uzsakymas" value="#{klientas.uzsakymasList}">
+                            <h:outputText value="#{uzsakymas.uzsakymoNr}, " />
+                        </ui:repeat>
+                    </p:column>
+                    <p:column headerText="Uzsakymas">
+                        <h:outputText value="#{uzsakymas.klientas.uzsakymoNr} " />
                     </p:column>
 
                 </p:dataTable>
             </p:fieldset>
+
+            <h2>Sukurti naują klientą ir užsakymą</h2>
+            <table>
+                <tr>
+                    <td>
+                        <h:panelGrid columns="3">
+                            <p:outputLabel for="vardas" value="Vardas"/>
+                            <p:inputText id="vardas" value="#{requestUseCaseControllerJPA.klientas.vardas}"/>
+                            <p:message for="vardas"/>
+                            <p:outputLabel for="pavarde" value="Pavardė"/>
+                            <p:inputText id="pavarde" value="#{requestUseCaseControllerJPA.klientas.pavarde}"/>
+                            <p:message for="pavarde"/>
+                            <p:outputLabel for="telefonas" value="Telefono nr."/>
+                            <p:inputText id="telefonas" value="#{requestUseCaseControllerJPA.klientas.telefonas}"/>
+                            <p:message for="telefonas"/>
+                        </h:panelGrid>
+                    </td>
+
+                </tr>
+            </table>
+            <p:commandButton value="Sukurti klientą ir užsakymą"
+                             actionListener="#{requestUseCaseControllerJPA.createCourseStudent()}"
+                             ajax="false"/>
+            <p:messages globalOnly="true"/>
 
 
         </h:form>

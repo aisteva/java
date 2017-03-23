@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import lt.vu.entities.Klientas;
 import lt.vu.entities.Uzsakymas;
 import lt.vu.usecases.cdi.dao.KlientasDAO;
+import lt.vu.usecases.cdi.dao.UzsakymasDAO;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
@@ -20,15 +21,15 @@ public class RequestUseCaseControllerJPA {
     @Getter
     private Uzsakymas uzsakymas = new Uzsakymas();
 
-    //@Inject
-    //private UzsakymasDAO uzsakymasDAO;
+    @Inject
+    private UzsakymasDAO uzsakymasDAO;
     @Inject
     private KlientasDAO klientasDAO;
 
     @Transactional
     public void createCourseStudent() {
-        klientas.getUzsakymasList().add(uzsakymas);
-        //uzsakymas.getKlientasList().add(klientas);
+       // klientas.getUzsakymasList().add(uzsakymas);
+        //uzsakymas.getKlientoNr();
         //uzsakymasDAO.create(uzsakymas);
         klientasDAO.create(klientas);
         log.info("Maybe OK...");
