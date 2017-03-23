@@ -4,17 +4,12 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="StudentsDB" targetRuntime="MyBatis3Simple">
-        <jdbcConnection driverClass="org.h2.Driver"
-                        connectionURL="jdbc:h2:~/h2database/StudentsDB;AUTO_SERVER=TRUE"
-                        userId="sa"
-                        password="sa">
+    <context id="posgres" targetRuntime="MyBatis3Simple">
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://localhost:5435/postgres"
+                        userId="postgres"
+                        password="123456">
         </jdbcConnection>
-        <!--<jdbcConnection driverClass="org.postgresql.Driver"-->
-                        <!--connectionURL="jdbc:postgresql://localhost/studentsdb"-->
-                        <!--userId="postgres"-->
-                        <!--password="postgres">-->
-        <!--</jdbcConnection>-->
 
         <javaModelGenerator targetPackage="lt.vu.usecases.mybatis.model" targetProject="MAVEN" />
 
@@ -26,19 +21,19 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="lt.vu.usecases.mybatis.dao" targetProject="MAVEN" />
 
         
-        <table schema="public" tableName="university">
-            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        <table schema="public" tableName="filmas">
+            <generatedKey column="filmo_id" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
-        <table schema="public" tableName="student">
-            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        <table schema="public" tableName="klientas">
+            <generatedKey column="kliento_nr" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
-        <table schema="public" tableName="course">
-            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        <table schema="public" tableName="uzsakymas">
+            <generatedKey column="uzsakymo_nr" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
-        <table schema="public" tableName="student_course">
+        <table schema="public" tableName="filmu_uzsakymas">
         </table>
     </context>
 </generatorConfiguration>
