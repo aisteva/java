@@ -16,17 +16,23 @@
             <p:fieldset legend="Klientų sąrašas" toggleable="true" style="width: 50%">
                 <p:dataTable value="#{requestUseCaseControllerJPA.getAllClients()}" var="klientas">
                     <p:column headerText="Klientas">
-                        <h:outputText value="#{klientas.klientoNr}. #{klientas.vardas} #{klientas.pavarde} #{klientas.telefonas}" />
+                        <h:outputText value="#{klientas.vardas} #{klientas.pavarde} #{klientas.telefonas}" />
                     </p:column>
-                    <p:column headerText="Uzsakymai">
+                    <p:column headerText="Užsakymai">
                         <ui:repeat var="uzsakymas" value="#{klientas.uzsakymasList}">
                             <h:outputText value="#{uzsakymas.uzsakymoNr}, " />
                         </ui:repeat>
                     </p:column>
-                    <p:column headerText="Uzsakymas">
-                        <h:outputText value="#{uzsakymas.klientas.uzsakymoNr} " />
+                </p:dataTable>
+                <p:dataTable value="#{uzsakymasControllerJPA.getAllOrders()}" var="uzsakymas">
+                    <p:column headerText="Užsakymo numeris">
+                            <h:outputText value="#{uzsakymas.uzsakymoNr} " />
                     </p:column>
-
+                    <p:column headerText="Filmai">
+                        <ui:repeat var="filmas" value="#{uzsakymas.filmasList}">
+                            <h:outputText value="#{filmas.pavadinimas} " />
+                        </ui:repeat>
+                    </p:column>
                 </p:dataTable>
             </p:fieldset>
 
@@ -49,7 +55,7 @@
 
                 </tr>
             </table>
-            <p:commandButton value="Sukurti klientą ir užsakymą"
+            <p:commandButton value="Sukurti klientą"
                              actionListener="#{requestUseCaseControllerJPA.createCourseStudent()}"
                              ajax="false"/>
             <p:messages globalOnly="true"/>

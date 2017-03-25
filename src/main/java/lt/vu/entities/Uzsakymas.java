@@ -43,6 +43,7 @@ public class Uzsakymas implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date grazinimoData;
 
+
     @ManyToMany(mappedBy = "uzsakymasList")
     private List<Filmas> filmasList;
     @JoinColumn(name = "kliento_nr", referencedColumnName = "kliento_nr")
