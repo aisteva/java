@@ -29,7 +29,7 @@ public class RequestUseCaseControllerMyBatis {
 
 
     @Transactional
-    public void createCourseStudent() {
+    public void createClient() {
         //courseMapper.insert(course);
         klientasMapper.insert(klientas);
 //        StudentCourse studentCourse = new StudentCourse();

@@ -39,6 +39,29 @@
                 </p:dataTable>
             </p:fieldset>
 
+            <h2>Sukurti naują klientą</h2>
+            <table>
+                <tr>
+                    <td>
+                        <h:panelGrid columns="3">
+                            <p:outputLabel for="vardas" value="Vardas"/>
+                            <p:inputText id="vardas" value="#{requestUseCaseControllerMyBatis.klientas.vardas}"/>
+                            <p:message for="vardas"/>
+                            <p:outputLabel for="pavarde" value="Pavardė"/>
+                            <p:inputText id="pavarde" value="#{requestUseCaseControllerMyBatis.klientas.pavarde}"/>
+                            <p:message for="pavarde"/>
+                            <p:outputLabel for="telefonas" value="Telefono nr."/>
+                            <p:inputText id="telefonas" value="#{requestUseCaseControllerMyBatis.klientas.telefonas}"/>
+                            <p:message for="telefonas"/>
+                        </h:panelGrid>
+                    </td>
+
+                </tr>
+            </table>
+            <p:commandButton value="Sukurti klientą"
+                             actionListener="#{requestUseCaseControllerMyBatis.createClient()}"
+                             ajax="false"/>
+            <p:messages globalOnly="true"/>
 
         </h:form>
     </h:body>
