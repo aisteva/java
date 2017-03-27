@@ -24,7 +24,19 @@
                         </ui:repeat>
                     </p:column>
                 </p:dataTable>
-
+                <p:dataTable value="#{uzsakymasControllerMyBatis.getAllOrders()}" var="uzsakymas">
+                    <p:column headerText="Užsakymo numeris">
+                        <h:outputText value="#{uzsakymas.uzsakymoNr} " />
+                    </p:column>
+                    <p:column headerText="Filmai">
+                        <ui:repeat var="filmas" value="#{uzsakymas.filmasList}">
+                            <h:outputText value="#{filmas.pavadinimas} " />
+                        </ui:repeat>
+                    </p:column>
+                    <p:column headerText="Klientas">
+                        <h:outputText value="#{uzsakymas.klientas} //" />
+                    </p:column>
+                </p:dataTable>
             </p:fieldset>
 
 

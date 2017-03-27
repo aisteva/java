@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="posgres" targetRuntime="MyBatis3Simple">
+    <context id="postgres" targetRuntime="MyBatis3Simple">
         <jdbcConnection driverClass="org.postgresql.Driver"
                         connectionURL="jdbc:postgresql://localhost:5435/postgres"
                         userId="postgres"
