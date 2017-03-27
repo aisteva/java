@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lt.vu.usecases.mybatis.dao.FilmuUzsakymasMapper">
+  <resultMap id="BaseResultMap" type="lt.vu.usecases.mybatis.model.FilmuUzsakymas">
+    <id column="filmo_id" jdbcType="INTEGER" property="filmoId" />
+    <id column="uzsakymo_nr" jdbcType="INTEGER" property="uzsakymoNr" />
+  </resultMap>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from public.filmu_uzsakymas
+    where filmo_id = #{filmoId,jdbcType=INTEGER}
+      and uzsakymo_nr = #{uzsakymoNr,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="lt.vu.usecases.mybatis.model.FilmuUzsakymas">
+    insert into public.filmu_uzsakymas (filmo_id, uzsakymo_nr)
+    values (#{filmoId,jdbcType=INTEGER}, #{uzsakymoNr,jdbcType=INTEGER})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select filmo_id, uzsakymo_nr
+    from public.filmu_uzsakymas
+  </select>
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lt.vu.usecases.mybatis.dao.FilmasMapper">
+  <resultMap id="BaseResultMap" type="lt.vu.usecases.mybatis.model.Filmas">
+    <id column="filmo_id" jdbcType="INTEGER" property="filmoId" />
+    <result column="pavadinimas" jdbcType="VARCHAR" property="pavadinimas" />
+    <result column="kategorija" jdbcType="CHAR" property="kategorija" />
+    <result column="kaina" jdbcType="SMALLINT" property="kaina" />
+    <result column="metai" jdbcType="SMALLINT" property="metai" />
+
+
+
+    <!-- Rankomis prirašytas ryšiui ManyToMany Filmas - Uzsakymas -->
+    <!-- Nested select (yra N+1 select problema) -->
+    <collection property="uzsakymasList" javaType="ArrayList" column="uzsakymo_nr" ofType="Uzsakymas" select="selectOrderForFilm"/>
+  </resultMap>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from public.filmas
+    where filmo_id = #{filmoId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" keyColumn="filmo_id" keyProperty="filmoId" parameterType="lt.vu.usecases.mybatis.model.Filmas" useGeneratedKeys="true">
+    insert into public.filmas (pavadinimas, kategorija, kaina, 
+      metai)
+    values (#{pavadinimas,jdbcType=VARCHAR}, #{kategorija,jdbcType=CHAR}, #{kaina,jdbcType=SMALLINT}, 
+      #{metai,jdbcType=SMALLINT})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="lt.vu.usecases.mybatis.model.Filmas">
+    update public.filmas
+    set pavadinimas = #{pavadinimas,jdbcType=VARCHAR},
+      kategorija = #{kategorija,jdbcType=CHAR},
+      kaina = #{kaina,jdbcType=SMALLINT},
+      metai = #{metai,jdbcType=SMALLINT}
+    where filmo_id = #{filmoId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select filmo_id, pavadinimas, kategorija, kaina, metai
+    from public.filmas
+    where filmo_id = #{filmoId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select filmo_id, pavadinimas, kategorija, kaina, metai
+    from public.filmas
+  </select>
+
+
+
+  <!-- Rankomis prirašytas ryšiui ManyToMany  Uzsakymas - Filmas -->
+  <select id="selectOrderForFilm" resultType="Uzsakymas">
+    SELECT
+    u.uzsakymo_nr,
+    u.paemimo_data,
+    u.grazinimo_data,
+    FROM public.uzsakymas u
+    JOIN public.filmu_uzsakymas fu on u.uzsakymo_nr = fu.uzsakymo_nr
+    WHERE fu.filmo_id = #{filmoId,jdbcType=INTEGER}
+  </select>
+</mapper>
