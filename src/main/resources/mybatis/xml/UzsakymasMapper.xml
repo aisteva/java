@@ -51,9 +51,9 @@
 
   <select id="selectAll" resultMap="BaseResultMap">
     select u.uzsakymo_nr, u.paemimo_data, u.grazinimo_data, u.kliento_nr,
-    k.vardas as klientas_vardas
+    k.vardas as klientas_vardas, k.pavarde as klientas_pavarde
     from "public".uzsakymas u
-    LEFT JOIN "public".klientas k ON u.kliento_nr = u.kliento_nr
+    LEFT JOIN "public".klientas k ON u.kliento_nr = k.kliento_nr
   </select>
 
 
