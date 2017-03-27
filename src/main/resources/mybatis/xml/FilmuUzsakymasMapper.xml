@@ -9,16 +9,16 @@
 
 
   <delete id="deleteByPrimaryKey" parameterType="map">
-    delete from public.filmu_uzsakymas
+    delete from "public".filmu_uzsakymas
     where filmo_id = #{filmoId,jdbcType=INTEGER}
       and uzsakymo_nr = #{uzsakymoNr,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="lt.vu.usecases.mybatis.model.FilmuUzsakymas">
-    insert into public.filmu_uzsakymas (filmo_id, uzsakymo_nr)
+    insert into "public".filmu_uzsakymas (filmo_id, uzsakymo_nr)
     values (#{filmoId,jdbcType=INTEGER}, #{uzsakymoNr,jdbcType=INTEGER})
   </insert>
   <select id="selectAll" resultMap="BaseResultMap">
     select filmo_id, uzsakymo_nr
-    from public.filmu_uzsakymas
+    from "public".filmu_uzsakymas
   </select>
 </mapper>

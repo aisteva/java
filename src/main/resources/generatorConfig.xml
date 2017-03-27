@@ -21,19 +21,19 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="lt.vu.usecases.mybatis.dao" targetProject="MAVEN" />
 
         
-        <table schema="public" tableName="filmas">
+        <table schema="'public'" tableName="filmas">
             <generatedKey column="filmo_id" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
-        <table schema="public" tableName="klientas">
+        <table schema="'public'" tableName="klientas">
             <generatedKey column="kliento_nr" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
-        <table schema="public" tableName="uzsakymas">
+        <table schema="'public'" tableName="uzsakymas">
             <generatedKey column="uzsakymo_nr" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
-        <table schema="public" tableName="filmu_uzsakymas">
+        <table schema="'public'" tableName="filmu_uzsakymas">
         </table>
     </context>
 </generatorConfiguration>

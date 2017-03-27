@@ -14,9 +14,6 @@ import java.util.List;
 @Slf4j
 public class UzsakymasControllerMyBatis {
 
-
-
-
     @Getter
     private Uzsakymas uzsakymas = new Uzsakymas();
 
@@ -24,7 +21,7 @@ public class UzsakymasControllerMyBatis {
     private UzsakymasMapper uzsakymasMapper;
 
 
-    public List<Uzsakymas> getAllOrders() {
+    public List<lt.vu.usecases.mybatis.model.Uzsakymas> getAllOrders() {
         return uzsakymasMapper.selectAll();
     }
 

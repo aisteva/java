@@ -23,20 +23,20 @@
 
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from public.uzsakymas
+    delete from uzsakymas
     where uzsakymo_nr = #{uzsakymoNr,jdbcType=INTEGER}
   </delete>
 
   <insert id="insert" keyColumn="uzsakymo_nr" keyProperty="uzsakymoNr" parameterType="lt.vu.usecases.mybatis.model.Uzsakymas" useGeneratedKeys="true">
 
-    insert into public.uzsakymas (paemimo_data, grazinimo_data, kliento_nr
+    insert into "public".uzsakymas (paemimo_data, grazinimo_data, kliento_nr
       )
     values (#{paemimoData,jdbcType=DATE}, #{grazinimoData,jdbcType=DATE}, #{klientoNr,jdbcType=SMALLINT}
       )
   </insert>
 
   <update id="updateByPrimaryKey" parameterType="lt.vu.usecases.mybatis.model.Uzsakymas">
-    update public.uzsakymas
+    update "public".uzsakymas
     set paemimo_data = #{paemimoData,jdbcType=DATE},
       grazinimo_data = #{grazinimoData,jdbcType=DATE},
       kliento_nr = #{klientoNr,jdbcType=SMALLINT}
@@ -45,13 +45,15 @@
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select uzsakymo_nr, paemimo_data, grazinimo_data, kliento_nr
-    from public.uzsakymas
+    from "public".uzsakymas
     where uzsakymo_nr = #{uzsakymoNr,jdbcType=INTEGER}
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap">
-    select uzsakymo_nr, paemimo_data, grazinimo_data, kliento_nr
-    from public.uzsakymas
+    select u.uzsakymo_nr, u.paemimo_data, u.grazinimo_data, u.kliento_nr,
+    k.vardas as klientas_vardas
+    from "public".uzsakymas u
+    LEFT JOIN "public".klientas k ON u.kliento_nr = u.kliento_nr
   </select>
 
 

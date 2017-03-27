@@ -17,19 +17,19 @@
 
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from public.filmas
+    delete from "public".filmas
     where filmo_id = #{filmoId,jdbcType=INTEGER}
   </delete>
 
   <insert id="insert" keyColumn="filmo_id" keyProperty="filmoId" parameterType="lt.vu.usecases.mybatis.model.Filmas" useGeneratedKeys="true">
-    insert into public.filmas (pavadinimas, kategorija, kaina, 
+    insert into "public".filmas (pavadinimas, kategorija, kaina,
       metai)
     values (#{pavadinimas,jdbcType=VARCHAR}, #{kategorija,jdbcType=CHAR}, #{kaina,jdbcType=SMALLINT}, 
       #{metai,jdbcType=SMALLINT})
   </insert>
 
   <update id="updateByPrimaryKey" parameterType="lt.vu.usecases.mybatis.model.Filmas">
-    update public.filmas
+    update "public".filmas
     set pavadinimas = #{pavadinimas,jdbcType=VARCHAR},
       kategorija = #{kategorija,jdbcType=CHAR},
       kaina = #{kaina,jdbcType=SMALLINT},
@@ -39,13 +39,13 @@
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select filmo_id, pavadinimas, kategorija, kaina, metai
-    from public.filmas
+    from "public".filmas
     where filmo_id = #{filmoId,jdbcType=INTEGER}
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap">
     select filmo_id, pavadinimas, kategorija, kaina, metai
-    from public.filmas
+    from "public".filmas
   </select>
 
 
@@ -56,8 +56,8 @@
     u.uzsakymo_nr,
     u.paemimo_data,
     u.grazinimo_data,
-    FROM public.uzsakymas u
-    JOIN public.filmu_uzsakymas fu on u.uzsakymo_nr = fu.uzsakymo_nr
+    FROM "public".uzsakymas u
+    JOIN "public".filmu_uzsakymas fu on u.uzsakymo_nr = fu.uzsakymo_nr
     WHERE fu.filmo_id = #{filmoId,jdbcType=INTEGER}
   </select>
 </mapper>
