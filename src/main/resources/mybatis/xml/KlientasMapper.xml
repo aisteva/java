@@ -47,8 +47,8 @@
     SELECT
     u.uzsakymo_nr,
     u.paemimo_data,
-    u.grazinimo_data,
+    u.grazinimo_data
     FROM "public".uzsakymas u
-    WHERE u.uzsakymo_nr = #{uzsakymoNr,jdbcType=INTEGER}
+    WHERE u.kliento_nr = #{klientoNr,jdbcType=INTEGER}
   </select>
 </mapper>

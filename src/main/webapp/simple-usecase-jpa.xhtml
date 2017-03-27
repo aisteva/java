@@ -34,12 +34,12 @@
                         </ui:repeat>
                     </p:column>
                     <p:column headerText="Klientas">
-                        <h:outputText value="#{uzsakymas.klientoNr.vardas} //" />
+                        <h:outputText value="#{uzsakymas.klientoNr.vardas} #{uzsakymas.klientoNr.pavarde}" />
                     </p:column>
                 </p:dataTable>
             </p:fieldset>
 
-            <h2>Sukurti naują klientą ir užsakymą</h2>
+            <h2>Sukurti naują klientą</h2>
             <table>
                 <tr>
                     <td>

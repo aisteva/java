@@ -19,8 +19,8 @@
                         <h:outputText value="#{klientas.vardas} #{klientas.pavarde} #{klientas.telefonas}" />
                     </p:column>
                     <p:column headerText="Užsakymai">
-                        <ui:repeat var="uzsakymas" value="#{klientas.uzsakymasList}">
-                            <h:outputText value="#{uzsakymas.uzsakymoNr}, " />
+                        <ui:repeat var="uzsakymas1" value="#{klientas.uzsakymasList}">
+                            <h:outputText value="#{uzsakymas1.uzsakymoNr}, " />
                         </ui:repeat>
                     </p:column>
                 </p:dataTable>
@@ -28,11 +28,11 @@
                     <p:column headerText="Užsakymo numeris">
                         <h:outputText value="#{uzsakymas.uzsakymoNr} " />
                     </p:column>
-                    <!--<p:column headerText="Filmai">-->
-                        <!--<ui:repeat var="filmas" value="#{uzsakymas.filmasList}">-->
-                            <!--<h:outputText value="#{filmas.pavadinimas} " />-->
-                        <!--</ui:repeat>-->
-                    <!--</p:column>-->
+                    <p:column headerText="Filmai">
+                        <ui:repeat var="filmas" value="#{uzsakymas.filmasList}">
+                            <h:outputText value="#{filmas.pavadinimas} " />
+                        </ui:repeat>
+                    </p:column>
                     <p:column headerText="Klientas">
                         <h:outputText value="#{uzsakymas.klientas.vardas} #{uzsakymas.klientas.pavarde}" />
                     </p:column>
