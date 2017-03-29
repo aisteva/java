@@ -24,7 +24,7 @@ import java.util.List;
         @NamedQuery(name = "Klientas.findByTelefonas", query = "SELECT k FROM Klientas k WHERE k.telefonas = :telefonas")})
 
 
-//TODO lombok
+
 
 @Getter
 @Setter

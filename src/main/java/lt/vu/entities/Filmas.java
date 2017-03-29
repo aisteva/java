@@ -30,7 +30,7 @@ import java.util.List;
         @NamedQuery(name = "Filmas.findByMetai", query = "SELECT f FROM Filmas f WHERE f.metai = :metai")
 })
 
-//TODO Lombok
+
 
 @Getter
 @Setter
