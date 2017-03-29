@@ -9,7 +9,7 @@
 
 
 
-    <collection property="uzsakymasList" javaType="ArrayList" column="uzsakymo_nr" ofType="Uzsakymas" select="selectOrdersForClient"/>
+    <collection property="uzsakymasList" javaType="ArrayList" column="kliento_nr" ofType="Uzsakymas" select="selectOrdersForClient"/>
 
 
 
@@ -42,7 +42,7 @@
   </select>
 
 
-  <!-- Rankomis prirašytas ryšiui OneToMany Klientas - Uzsakymas -->
+  <!-- OneToMany Klientas - Uzsakymas -->
   <select id="selectOrdersForClient" resultType="Uzsakymas">
     SELECT
     u.uzsakymo_nr,

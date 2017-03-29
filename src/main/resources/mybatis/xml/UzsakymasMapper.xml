@@ -9,15 +9,10 @@
 
 
 
-    <!-- Rankomis prirašytas ryšiui ManyToOne Uzsakymas -> Klientas -->
-    <!-- Nested result (nėra N+1 select problemos) -->
     <association property="klientas" resultMap="lt.vu.usecases.mybatis.dao.KlientasMapper.BaseResultMap"
                  columnPrefix="klientas_"/>
 
-
-    <!--Rankomis prirašytas ryšiui ManyToMany Uzsakymas-Filmas-->
-    <!--Nested select(yraN+1 select problema)-->
-    <collection property="filmasList" javaType="ArrayList" column="filmo_id" ofType="Filmas" select="selectFilmsForOrder"/>
+    <collection property="filmasList" javaType="ArrayList" column="uzsakymo_nr" ofType="Filmas" select="selectFilmsForOrder"/>
 
 
 
@@ -57,7 +52,7 @@
   </select>
 
 
-  <!--Rankomisprirašytas ryšiui ManyToMany Uzsakymas-Filmas-->
+  <!--ManyToMany Uzsakymas-Filmas-->
   <select id="selectFilmsForOrder" resultType="Filmas">
   SELECT
   f.filmo_id,

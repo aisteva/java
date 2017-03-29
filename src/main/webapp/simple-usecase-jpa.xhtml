@@ -14,14 +14,9 @@
         <h1>Pridėti naują klientą (JPA)</h1>
         <h:form>
             <p:fieldset legend="Klientų sąrašas" toggleable="true" style="width: 50%">
-                <p:dataTable value="#{requestUseCaseControllerJPA.getAllClients()}" var="klientas">
+                <p:dataTable value="#{klientasControllerJPA.getAllClients()}" var="klientas">
                     <p:column headerText="Klientas">
                         <h:outputText value="#{klientas.vardas} #{klientas.pavarde} #{klientas.telefonas}" />
-                    </p:column>
-                    <p:column headerText="Užsakymai">
-                        <ui:repeat var="uzsakymas" value="#{klientas.uzsakymasList}">
-                            <h:outputText value="#{uzsakymas.uzsakymoNr}, " />
-                        </ui:repeat>
                     </p:column>
                 </p:dataTable>
                 <p:dataTable value="#{uzsakymasControllerJPA.getAllOrders()}" var="uzsakymas">
@@ -45,13 +40,13 @@
                     <td>
                         <h:panelGrid columns="3">
                             <p:outputLabel for="vardas" value="Vardas"/>
-                            <p:inputText id="vardas" value="#{requestUseCaseControllerJPA.klientas.vardas}"/>
+                            <p:inputText id="vardas" value="#{klientasControllerJPA.klientas.vardas}"/>
                             <p:message for="vardas"/>
                             <p:outputLabel for="pavarde" value="Pavardė"/>
-                            <p:inputText id="pavarde" value="#{requestUseCaseControllerJPA.klientas.pavarde}"/>
+                            <p:inputText id="pavarde" value="#{klientasControllerJPA.klientas.pavarde}"/>
                             <p:message for="pavarde"/>
                             <p:outputLabel for="telefonas" value="Telefono nr."/>
-                            <p:inputText id="telefonas" value="#{requestUseCaseControllerJPA.klientas.telefonas}"/>
+                            <p:inputText id="telefonas" value="#{klientasControllerJPA.klientas.telefonas}"/>
                             <p:message for="telefonas"/>
                         </h:panelGrid>
                     </td>
@@ -59,7 +54,7 @@
                 </tr>
             </table>
             <p:commandButton value="Sukurti klientą"
-                             actionListener="#{requestUseCaseControllerJPA.createCourseStudent()}"
+                             actionListener="#{klientasControllerJPA.createClient()}"
                              ajax="false"/>
             <p:messages globalOnly="true"/>
 

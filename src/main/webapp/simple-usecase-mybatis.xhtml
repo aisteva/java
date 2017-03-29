@@ -14,14 +14,9 @@
         <h1>Pridėti naują klientą (MyBatis)</h1>
         <h:form>
             <p:fieldset legend="Klientų sąrašas" toggleable="true" style="width: 50%">
-                <p:dataTable value="#{requestUseCaseControllerMyBatis.getAllClients()}" var="klientas">
+                <p:dataTable value="#{klientasControllerMyBatis.getAllClients()}" var="klientas">
                     <p:column headerText="Klientas">
                         <h:outputText value="#{klientas.vardas} #{klientas.pavarde} #{klientas.telefonas}" />
-                    </p:column>
-                    <p:column headerText="Užsakymai">
-                        <ui:repeat var="uzsakymas1" value="#{klientas.uzsakymasList}">
-                            <h:outputText value="#{uzsakymas1.uzsakymoNr}, " />
-                        </ui:repeat>
                     </p:column>
                 </p:dataTable>
                 <p:dataTable value="#{uzsakymasControllerMyBatis.getAllOrders()}" var="uzsakymas">
@@ -30,7 +25,7 @@
                     </p:column>
                     <p:column headerText="Filmai">
                         <ui:repeat var="filmas" value="#{uzsakymas.filmasList}">
-                            <h:outputText value="#{filmas.pavadinimas} " />
+                            <h:outputText value="#{filmas.pavadinimas}  "/>
                         </ui:repeat>
                     </p:column>
                     <p:column headerText="Klientas">
@@ -45,13 +40,13 @@
                     <td>
                         <h:panelGrid columns="3">
                             <p:outputLabel for="vardas" value="Vardas"/>
-                            <p:inputText id="vardas" value="#{requestUseCaseControllerMyBatis.klientas.vardas}"/>
+                            <p:inputText id="vardas" value="#{klientasControllerMyBatis.klientas.vardas}"/>
                             <p:message for="vardas"/>
                             <p:outputLabel for="pavarde" value="Pavardė"/>
-                            <p:inputText id="pavarde" value="#{requestUseCaseControllerMyBatis.klientas.pavarde}"/>
+                            <p:inputText id="pavarde" value="#{klientasControllerMyBatis.klientas.pavarde}"/>
                             <p:message for="pavarde"/>
                             <p:outputLabel for="telefonas" value="Telefono nr."/>
-                            <p:inputText id="telefonas" value="#{requestUseCaseControllerMyBatis.klientas.telefonas}"/>
+                            <p:inputText id="telefonas" value="#{klientasControllerMyBatis.klientas.telefonas}"/>
                             <p:message for="telefonas"/>
                         </h:panelGrid>
                     </td>
@@ -59,7 +54,7 @@
                 </tr>
             </table>
             <p:commandButton value="Sukurti klientą"
-                             actionListener="#{requestUseCaseControllerMyBatis.createClient()}"
+                             actionListener="#{klientasControllerMyBatis.createClient()}"
                              ajax="false"/>
             <p:messages globalOnly="true"/>
 
