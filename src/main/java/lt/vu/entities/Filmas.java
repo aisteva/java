@@ -5,7 +5,7 @@ package lt.vu.entities;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+//LABA DIENA
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +19,7 @@ import java.util.List;
  *
  * @author Aiste
  */
+
 @Entity
 @Table(name = "filmas")
 @NamedQueries({
