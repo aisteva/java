@@ -10,7 +10,7 @@
 
 
     <association property="klientas" resultMap="lt.vu.usecases.mybatis.dao.KlientasMapper.BaseResultMap"
-                 columnPrefix="klientas_"/>
+                 columnPrefix="k_"/>
 
     <collection property="filmasList" javaType="ArrayList" column="uzsakymo_nr" ofType="Filmas" select="selectFilmsForOrder"/>
 
