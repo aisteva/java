@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.johnzon.mapper.JohnzonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -60,6 +61,7 @@ public class Filmas implements Serializable {
             @JoinColumn(name = "filmo_id", referencedColumnName = "filmo_id")}, inverseJoinColumns = {
             @JoinColumn(name = "uzsakymo_nr", referencedColumnName = "uzsakymo_nr")})
     @ManyToMany
+    @JohnzonIgnore
     private List<Uzsakymas> uzsakymasList;
 
 

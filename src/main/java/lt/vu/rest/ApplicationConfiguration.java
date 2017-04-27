@@ -1,9 +1,8 @@
 package lt.vu.rest;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
 
 import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
 /**
  * Created by Aiste on 2017-04-27.
@@ -11,8 +10,4 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/rest")
 public class ApplicationConfiguration extends Application{
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
-    }
 }

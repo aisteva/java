@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.johnzon.mapper.JohnzonIgnore;
 
 
 import javax.persistence.*;
@@ -49,6 +50,7 @@ public class Klientas implements Serializable {
     private String telefonas;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "klientoNr")
+    @JohnzonIgnore
     private List<Uzsakymas> uzsakymasList;
 
 
