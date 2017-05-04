@@ -10,9 +10,9 @@ import lombok.Setter;
 import lombok.ToString;
 import org.apache.johnzon.mapper.JohnzonIgnore;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -55,7 +55,7 @@ public class Klientas implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "klientoNr")
     @JohnzonIgnore
-    private List<Uzsakymas> uzsakymasList;
+    private List<Uzsakymas> uzsakymasList = new ArrayList<>();;
 
 
 }

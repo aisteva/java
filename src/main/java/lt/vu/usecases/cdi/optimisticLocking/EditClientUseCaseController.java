@@ -50,7 +50,7 @@ public class EditClientUseCaseController implements Serializable {
     }
 
     @Transactional
-    public void updateSelectedStudent() {
+    public void updateSelectedClient() {
         try {
             klientasDAO.update(selectedClient);
             reloadAll();
@@ -66,7 +66,7 @@ public class EditClientUseCaseController implements Serializable {
     @Transactional
     public void overwriteClient() {
         selectedClient.setOptLockVersion(conflictingClient.getOptLockVersion());
-        updateSelectedStudent();
+        updateSelectedClient();
     }
 
     public void reloadAll() {

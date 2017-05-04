@@ -33,11 +33,12 @@ public class ClientRestService {
     @Path("/create")
     @Transactional
     public Klientas create(
+            @QueryParam("klientoNr")Integer klientoNr,
             @QueryParam("vardas")String vardas,
             @QueryParam("pavarde")String pavarde,
             @QueryParam("telefonas")String telefonas){
         Klientas klientas = new Klientas();
-        //klientas.setKlientoNr(klientoNr);
+        klientas.setKlientoNr(klientoNr);
         klientas.setVardas(vardas);
         klientas.setPavarde(pavarde);
         klientas.setTelefonas(telefonas);
