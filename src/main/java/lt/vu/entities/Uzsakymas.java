@@ -24,12 +24,11 @@ import java.util.List;
         @NamedQuery(name = "Uzsakymas.findByPaemimoData", query = "SELECT u FROM Uzsakymas u WHERE u.paemimoData = :paemimoData"),
         @NamedQuery(name = "Uzsakymas.findByGrazinimoData", query = "SELECT u FROM Uzsakymas u WHERE u.grazinimoData = :grazinimoData")})
 
-//TODO Lombok
+
 @Getter
 @Setter
 @EqualsAndHashCode (of = "uzsakymoNr")
 @ToString ( of = "uzsakymoNr")
-
 public class Uzsakymas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

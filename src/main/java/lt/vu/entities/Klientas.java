@@ -31,7 +31,6 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode (of = "klientoNr")
 @ToString (of = {"klientoNr", "vardas", "pavarde"})
-
 public class Klientas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,7 +54,7 @@ public class Klientas implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "klientoNr")
     @JohnzonIgnore
-    private List<Uzsakymas> uzsakymasList = new ArrayList<>();;
+    private List<Uzsakymas> uzsakymasList;
 
 
 }
