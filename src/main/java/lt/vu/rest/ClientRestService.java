@@ -5,11 +5,10 @@ import lt.vu.entities.Klientas;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.ws.rs.Path;
-import javax.ws.rs.GET;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * Created by Aiste on 2017-04-27.
@@ -27,4 +26,46 @@ public class ClientRestService {
     public Klientas find(@PathParam("klientoNr") Integer klientoNr){
         return em.find(Klientas.class, klientoNr);
     }
+
+
+
+    @PUT
+    @Path("/create")
+    @Transactional
+    public Klientas create(
+            @QueryParam("vardas")String vardas,
+            @QueryParam("pavarde")String pavarde,
+            @QueryParam("telefonas")String telefonas){
+        Klientas klientas = new Klientas();
+        //klientas.setKlientoNr(klientoNr);
+        klientas.setVardas(vardas);
+        klientas.setPavarde(pavarde);
+        klientas.setTelefonas(telefonas);
+        em.persist(klientas);
+
+        return klientas;
+
+
+    }
+
+    @POST
+    @Path("/update/{klientoNr}")
+    @Transactional
+    public Response update(@PathParam("klientoNr") Integer klientoNr,
+                           @QueryParam("vardas") String vardas,
+                           @QueryParam("pavarde") String pavarde,
+                           @QueryParam("telefonas") String telefonas){
+        Klientas klientas = em.find(Klientas.class, klientoNr);
+        if(klientas == null){
+            throw new IllegalArgumentException("Kliento nr.: "
+                    +klientoNr+ "nerastas");
+        }
+        klientas.setVardas(vardas);
+        klientas.setPavarde(pavarde);
+        klientas.setTelefonas(telefonas);
+        em.merge(klientas);
+        return Response.ok(klientas).build(); //low level API
+    }
+
+
 }
