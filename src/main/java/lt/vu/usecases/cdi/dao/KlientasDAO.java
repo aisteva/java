@@ -18,7 +18,7 @@ public class KlientasDAO {
         em.persist(klientas);
     }
 
-    public void update(Klientas klientas){
+    public void updateAndFlush(Klientas klientas){
         em.merge(klientas);
         em.flush();
     }

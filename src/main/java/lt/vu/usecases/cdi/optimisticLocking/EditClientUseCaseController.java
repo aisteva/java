@@ -52,9 +52,11 @@ public class EditClientUseCaseController implements Serializable {
     @Transactional
     public void updateSelectedClient() {
         try {
-            klientasDAO.update(selectedClient);
+            klientasDAO.updateAndFlush(selectedClient);
+            log.info("padarau update");
             reloadAll();
         } catch (OptimisticLockException ole) {
+            log.info("pagavau");
             conflictingClient = klientasDAO.findByKlientoNr(selectedClient.getKlientoNr());
             // Pavyzdys, kaip inicializuoti LAZY ryšį, jei jo reikia HTML puslapyje:
             Hibernate.initialize(conflictingClient.getUzsakymasList());
@@ -65,6 +67,7 @@ public class EditClientUseCaseController implements Serializable {
 
     @Transactional
     public void overwriteClient() {
+        log.info("perrašau");
         selectedClient.setOptLockVersion(conflictingClient.getOptLockVersion());
         updateSelectedClient();
     }
