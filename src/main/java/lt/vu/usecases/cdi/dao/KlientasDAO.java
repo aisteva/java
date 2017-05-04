@@ -18,7 +18,16 @@ public class KlientasDAO {
         em.persist(klientas);
     }
 
+    public void update(Klientas klientas){
+        em.merge(klientas);
+        em.flush();
+    }
+
     public List<Klientas> getAllClients() {
         return em.createNamedQuery("Klientas.findAll", Klientas.class).getResultList();
+    }
+
+    public Klientas findByKlientoNr(Integer klientoNr){
+        return em.find(Klientas.class, klientoNr);
     }
 }

@@ -44,6 +44,10 @@ public class Uzsakymas implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date grazinimoData;
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
+
 
     @ManyToMany(mappedBy = "uzsakymasList")
     @JohnzonIgnore

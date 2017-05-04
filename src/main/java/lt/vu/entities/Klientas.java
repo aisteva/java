@@ -49,6 +49,10 @@ public class Klientas implements Serializable {
     @Column(name = "telefonas")
     private String telefonas;
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "klientoNr")
     @JohnzonIgnore
     private List<Uzsakymas> uzsakymasList;

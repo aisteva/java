@@ -57,6 +57,10 @@ public class Filmas implements Serializable {
     @Column(name = "metai")
     private Short metai;
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
+
     @JoinTable(name = "filmu_uzsakymas", joinColumns = {
             @JoinColumn(name = "filmo_id", referencedColumnName = "filmo_id")}, inverseJoinColumns = {
             @JoinColumn(name = "uzsakymo_nr", referencedColumnName = "uzsakymo_nr")})
