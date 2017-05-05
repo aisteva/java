@@ -29,14 +29,13 @@ public class EditClientUseCaseController implements Serializable {
     @Getter private Klientas selectedClient;
     @Getter private Klientas conflictingClient;
     @Getter private List<Klientas> allClients;
-    @Getter private List<Uzsakymas> allOrders;
+
 
 
     /*
      * DAO:
      */
     @Inject private KlientasDAO klientasDAO;
-    @Inject private UzsakymasDAO uzsakymasDAO;
 
 
     @PostConstruct
@@ -58,8 +57,6 @@ public class EditClientUseCaseController implements Serializable {
         } catch (OptimisticLockException ole) {
             log.info("pagavau");
             conflictingClient = klientasDAO.findByKlientoNr(selectedClient.getKlientoNr());
-            // Pavyzdys, kaip inicializuoti LAZY ryšį, jei jo reikia HTML puslapyje:
-            Hibernate.initialize(conflictingClient.getUzsakymasList());
             // Pranešam PrimeFaces dialogui, kad užsidaryti dar negalima:
             RequestContext.getCurrentInstance().addCallbackParam("validationFailed", true);
         }
@@ -74,6 +71,5 @@ public class EditClientUseCaseController implements Serializable {
 
     public void reloadAll() {
         allClients = klientasDAO.getAllClients();
-        allOrders = uzsakymasDAO.getAllOrders();
-    }
+
 }

@@ -11,7 +11,7 @@
     </h:head>
 
     <h:body>
-        <h1>Edit Student with Optimistic Locking</h1>
+        <h1>Edit Client with Optimistic Locking</h1>
 
         <h:form id="form">
             <p:fieldset id="list" style="width: 50%">
@@ -58,19 +58,6 @@
                         <p:message for="klientoNr"/>
 
 
-                        <h:outputText value="Uzsakymai:"/>
-                        <p:selectCheckboxMenu id="uzsakymasList" value="#{editClientUseCaseController.selectedClient.uzsakymasList}"
-                                              converter="omnifaces.SelectItemsIndexConverter"
-                                              label="Pasirinkite užsakymą:" updateLabel="true"
-                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-                            <f:attribute name="collectionType" value="java.util.ArrayList" /> <!-- Kitaip JSF bando kurti naują Hibernate PersistentBag ir būna bėdos... -->
-                            <f:selectItems value="#{editClientUseCaseController.allOrders}" var="order"
-                                           itemLabel="#{order.uzsakymoNr}" itemValue="#{order}" />
-                        </p:selectCheckboxMenu>
-                        <p:message for="uzsakymasList"/>
-
-
-
                         <h:outputText value="Opt. version:" />
                         <h:outputText value="#{editClientUseCaseController.selectedClient.optLockVersion}" style="font-weight: bold"/>
                     </p:panelGrid>
@@ -94,10 +81,6 @@
                         <h:outputText value="Registration No.:"/>
                         <h:outputText value="#{editClientUseCaseController.conflictingClient.klientoNr}"/>
 
-                        <h:outputText value="Uzsakymai:"/>
-                        <ui:repeat var="uzsakymas" value="#{editClientUseCaseController.conflictingClient.uzsakymasList}" varStatus="orderStatus">
-                            #{uzsakymas.uzsakymoNr}<h:outputText value=", " rendered="#{not orderStatus.last}"/>
-                        </ui:repeat>
 
                         <h:outputText value="Opt. version:" />
                         <h:outputText value="#{editClientUseCaseController.conflictingClient.optLockVersion}" style="font-weight: bold"/>
