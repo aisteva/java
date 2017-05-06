@@ -17,4 +17,8 @@
             <class>lt.vu.interceptor.LoggingInterceptor</class>
         </interceptors>
 
+    <decorators>
+        <class>lt.vu.decorator.TypeDecorator</class>
+    </decorators>
+
 </beans>
