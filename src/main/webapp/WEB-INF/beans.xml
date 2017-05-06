@@ -12,4 +12,9 @@
         <!--<class>lt.vu.alternatives.LoyalGoldClient</class>-->
         <!--&lt;!&ndash;&lt;!&ndash;<class>lt.vu.alternatives.RegularClient</class>&ndash;&gt;&ndash;&gt;-->
     </alternatives>
+
+        <interceptors>
+            <class>lt.vu.interceptor.LoggingInterceptor</class>
+        </interceptors>
+
 </beans>
