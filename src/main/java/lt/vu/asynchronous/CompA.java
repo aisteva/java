@@ -1,16 +1,15 @@
 package lt.vu.asynchronous;
 
-import javax.ejb.Stateful;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+
 @Named
-@SessionScoped
-@Stateful
+@ApplicationScoped
 public class CompA implements Serializable {
 
     @Inject
@@ -18,19 +17,18 @@ public class CompA implements Serializable {
 
     private Future<String> resultInFuture = null;
 
-    public String sayHello() throws ExecutionException, InterruptedException {
+    public String callAsyncMethod() throws ExecutionException, InterruptedException {
         if (resultInFuture == null) {
-            resultInFuture = compB.sayHello();
-            return "I just have called CompB. Result is ready? " + resultInFuture.isDone();
+            resultInFuture = compB.asyncMethod();
+            return "Buvo iskviesta, kazkas blogai? " + resultInFuture.isDone();
         } else {
             if (resultInFuture.isDone()) {
                 String result = resultInFuture.get();
                 resultInFuture = null;
-                return "Result is finally ready, and it is: " + result;
+                return result;
             } else {
-                return "Result is not yet ready... please wait a moment...";
+                return "Skaiciavimai vis dar nebaigti...";
             }
         }
     }
-
 }

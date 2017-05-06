@@ -6,4 +6,10 @@
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
 
+
+    <alternatives>
+        <class>lt.vu.alternatives.GoldClient</class>
+        <!--<class>lt.vu.alternatives.LoyalGoldClient</class>-->
+        <!--&lt;!&ndash;&lt;!&ndash;<class>lt.vu.alternatives.RegularClient</class>&ndash;&gt;&ndash;&gt;-->
+    </alternatives>
 </beans>

@@ -21,4 +21,9 @@ public class FilmasDAO {
     public List<Filmas> getAllFilms() {
         return em.createNamedQuery("Filmas.findAll", Filmas.class).getResultList();
     }
+
+
+    public Filmas findByMetai(Integer metai){
+        return em.find(Filmas.class, metai);
+    }
 }

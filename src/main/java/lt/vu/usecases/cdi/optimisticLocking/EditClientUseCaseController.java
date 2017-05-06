@@ -3,10 +3,7 @@ package lt.vu.usecases.cdi.optimisticLocking;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import lt.vu.entities.Klientas;
-import lt.vu.entities.Uzsakymas;
 import lt.vu.usecases.cdi.dao.KlientasDAO;
-import lt.vu.usecases.cdi.dao.UzsakymasDAO;
-import org.hibernate.Hibernate;
 import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.context.RequestContext;
 
@@ -71,5 +68,6 @@ public class EditClientUseCaseController implements Serializable {
 
     public void reloadAll() {
         allClients = klientasDAO.getAllClients();
+    }
 
 }
