@@ -2,6 +2,7 @@ package lt.vu.alternatives;
 
 import lombok.Getter;
 import lombok.Setter;
+import lt.vu.decorator.RegularClient;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -27,6 +28,8 @@ public class ClientBean {
 
     public String typeString() {
         setClientType(typer.typeString());
+        lt.vu.decorator.RegularClient rg = new RegularClient();
+        rg.typeString1();
         //goldClient.extraTypeString();
         //System.out.println(goldClient.printer());
         return getClientType();

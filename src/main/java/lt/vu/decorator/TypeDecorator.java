@@ -1,20 +1,14 @@
 package lt.vu.decorator;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
  * Created by Aiste on 2017-05-06.
  */
-@Named
+
 @Decorator
-@Setter
-@Getter
 public abstract class TypeDecorator implements TyperDK {
 
 
