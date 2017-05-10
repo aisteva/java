@@ -1,8 +1,10 @@
 package lt.vu.decorator;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
-import javax.enterprise.inject.Any;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,14 +13,19 @@ import javax.inject.Named;
  */
 @Named
 @Decorator
-public abstract class TypeDecorator implements TyperDK{
+@Setter
+@Getter
+public abstract class TypeDecorator implements TyperDK {
+
 
     @Inject
     @Delegate
-    @Any
-    TyperDK typer;
+    @ClientProcessor
+    private TyperDK typer;
 
-    public String typeString() {
-        return "KĄ ČIA DARO? "+ typer.typeString();
+    public String typeString1() {
+        System.out.println("Pridedamas funkcionalumas");
+        System.out.println(typer.typeString1()+ ": nurodomas elementas papildytas");
+        return typer.typeString1();
     }
 }

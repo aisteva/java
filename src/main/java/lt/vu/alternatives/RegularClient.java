@@ -7,9 +7,17 @@ import javax.enterprise.inject.Alternative;
  */
 @Alternative
 public class RegularClient implements Typer {
-    @Override
+
+    public RegularClient(){}
+
     public String typeString(){
-        System.out.println();
+
         return "Regular client";
+    }
+
+
+
+    public String typeString1() {
+        return "regular dekor";
     }
 }

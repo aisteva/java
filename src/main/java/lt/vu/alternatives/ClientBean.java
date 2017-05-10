@@ -17,20 +17,26 @@ import javax.inject.Named;
 public class ClientBean {
 
     private String clientType = null;
-
+    private String ClientType2 = null;
 
     @Inject
     Typer typer;
+//
+//@Inject
+//    TyperDK typerDK;
 
-//    @Inject
-//    GoldClient goldClient;
-
-    public void encodeString() {
+    public String typeString() {
         setClientType(typer.typeString());
         //goldClient.extraTypeString();
         //System.out.println(goldClient.printer());
+        return getClientType();
 
     }
+
+//    public String typeString1(){
+//        setClientType2(typerDK.typeString1());
+//        return getClientType2();
+//    }
 
 
 
