@@ -21,6 +21,7 @@ public class LoggingInterceptor implements Serializable{
 
     @AroundInvoke
     public Object logMethodEntry(InvocationContext ctx) throws Exception {
+
         System.out.println("Entering method: " + ctx.getMethod().getName());
         return ctx.proceed();
     }

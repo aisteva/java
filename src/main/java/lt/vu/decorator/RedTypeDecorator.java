@@ -1,5 +1,7 @@
 package lt.vu.decorator;
 
+import lt.vu.alternatives.TypeDecorator;
+
 /**
  * Created by Aiste on 2017-05-07.
  */

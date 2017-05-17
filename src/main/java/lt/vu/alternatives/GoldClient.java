@@ -1,5 +1,6 @@
 package lt.vu.alternatives;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 
 /**
@@ -8,6 +9,7 @@ import javax.enterprise.inject.Alternative;
 
 
 @Alternative
+@ApplicationScoped
 public class GoldClient implements Typer{
 
     public GoldClient() {

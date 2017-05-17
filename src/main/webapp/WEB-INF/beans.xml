@@ -8,9 +8,9 @@
 
 
     <alternatives>
-        <!--<class>lt.vu.alternatives.GoldClient</class>-->
+        <class>lt.vu.alternatives.GoldClient</class>
         <!--<class>lt.vu.alternatives.LoyalGoldClient</class>-->
-        <class>lt.vu.alternatives.RegularClient</class>
+        <!--<class>lt.vu.alternatives.RegularClient</class>-->
     </alternatives>
 
 
@@ -19,7 +19,7 @@
         </interceptors>
 
     <decorators>
-        <class>lt.vu.decorator.TypeDecorator</class>
+        <class>lt.vu.alternatives.TypeDecorator</class>
     </decorators>
 
 </beans>

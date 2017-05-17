@@ -49,10 +49,8 @@ public class EditClientUseCaseController implements Serializable {
     public void updateSelectedClient() {
         try {
             klientasDAO.updateAndFlush(selectedClient);
-            log.info("padarau update");
             reloadAll();
         } catch (OptimisticLockException ole) {
-            log.info("pagavau");
             conflictingClient = klientasDAO.findByKlientoNr(selectedClient.getKlientoNr());
             // Pranešam PrimeFaces dialogui, kad užsidaryti dar negalima:
             RequestContext.getCurrentInstance().addCallbackParam("validationFailed", true);
@@ -61,7 +59,6 @@ public class EditClientUseCaseController implements Serializable {
 
     @Transactional
     public void overwriteClient() {
-        log.info("perrašau");
         selectedClient.setOptLockVersion(conflictingClient.getOptLockVersion());
         updateSelectedClient();
     }

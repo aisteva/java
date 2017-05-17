@@ -1,11 +1,11 @@
 package lt.vu.alternatives;
 
-import javax.enterprise.inject.Alternative;
+import javax.enterprise.inject.Specializes;
 
 /**
  * Created by Aiste on 2017-05-06.
  */
-@Alternative
+@Specializes
 public class LoyalGoldClient extends GoldClient{
 
     public LoyalGoldClient(){
