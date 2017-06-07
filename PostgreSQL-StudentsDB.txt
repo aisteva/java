@@ -1,30 +1,38 @@
-﻿CREATE TABLE university (
-  id serial PRIMARY KEY,
-  title CHARACTER VARYING(100) NOT NULL,
-  opt_lock_version INTEGER
+
+CREATE TABLE Filmas (
+	Filmo_ID 	INTEGER		NOT NULL,
+	Pavadinimas 	VARCHAR(32) 	NOT NULL,
+	Kategorija 	CHAR(12) 	DEFAULT 'Kita',
+	Kaina 		SMALLINT 	,
+	Metai 		SMALLINT 	DEFAULT 0,
+	PRIMARY KEY (Filmo_ID)
 );
 
-CREATE TABLE student (
-  id serial PRIMARY KEY,
-  first_name CHARACTER VARYING(20),
-  last_name CHARACTER VARYING(20),
-  registration_no CHARACTER VARYING(20) NOT NULL,
-  university_id INTEGER,
-  opt_lock_version INTEGER,
-  FOREIGN KEY (university_id) REFERENCES university (id)
+
+CREATE TABLE Uzsakymas (
+	Uzsakymo_Nr 	INTEGER 	NOT NULL CONSTRAINT blogas_nr_uzsakymo CHECK (Uzsakymo_Nr > 0),
+	Paemimo_data 	DATE 		NOT NULL,
+	Grazinimo_data 	DATE 		NOT NULL,
+	Kliento_Nr 	SMALLINT 	NOT NULL,
+	PRIMARY KEY (Uzsakymo_Nr),
+	FOREIGN KEY (Kliento_Nr) REFERENCES Klientas ON DELETE RESTRICT
 );
 
-CREATE TABLE course (
-  id serial PRIMARY KEY,
-  name CHARACTER VARYING(100) NOT NULL,
-  opt_lock_version INTEGER
+
+CREATE TABLE Filmu_uzsakymas(
+	Filmo_ID 	INTEGER 	NOT NULL,
+	Uzsakymo_Nr 	INTEGER 	NOT NULL,
+	PRIMARY KEY (Filmo_ID, Uzsakymo_Nr),
+	FOREIGN KEY (Filmo_ID) REFERENCES Filmas ON DELETE RESTRICT,
+	FOREIGN KEY (Uzsakymo_Nr) REFERENCES Uzsakymas ON DELETE RESTRICT
+
 );
 
-CREATE TABLE student_course
-(
-	student_id      INTEGER,
-	course_id       INTEGER,
-	PRIMARY KEY (student_id, course_id),
-	FOREIGN KEY (student_id) REFERENCES student (id),
-	FOREIGN KEY (course_id) REFERENCES course (id)
+CREATE TABLE Klientas (
+	Kliento_Nr 	SERIAL	NOT NULL CHECK (Kliento_Nr > 0),
+	Vardas 		VARCHAR(20) 	NOT NULL,
+	Pavarde 	VARCHAR(20) 	NOT NULL,
+	Telefonas 	CHAR(20) 	NOT NULL,
+	PRIMARY KEY (Kliento_Nr)
+	
 );
